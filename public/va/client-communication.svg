@@ -1,0 +1,19 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#061216"/>
+  <path d="M0 0H1200V675H0V0Z" fill="url(#grid)" opacity=".4"/>
+  <path d="M152 146H671V380H152V146Z" fill="#0B1823" stroke="#62E6FF" stroke-width="5"/>
+  <path d="M211 218H512" stroke="#F7FBFF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M211 278H596" stroke="#8CF4B8" stroke-width="18" stroke-linecap="round"/>
+  <path d="M278 380L210 464" stroke="#62E6FF" stroke-width="20" stroke-linecap="round"/>
+  <path d="M548 322H1048V529H548V322Z" fill="#101A2C" stroke="#FFD166" stroke-width="5"/>
+  <path d="M614 391H899" stroke="#F7FBFF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M614 451H974" stroke="#FF7AB6" stroke-width="18" stroke-linecap="round"/>
+  <path d="M892 529L980 590" stroke="#FFD166" stroke-width="20" stroke-linecap="round"/>
+  <text x="152" y="84" fill="#F7FBFF" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800">Client Communication</text>
+  <text x="152" y="632" fill="#9AA8BA" font-family="Inter, Arial, sans-serif" font-size="28">Professional email, phone, inquiry, and follow-up support</text>
+  <defs>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" stroke="white" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+</svg>

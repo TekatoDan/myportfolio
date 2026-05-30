@@ -1,0 +1,22 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#080D18"/>
+  <path d="M0 0H1200V675H0V0Z" fill="url(#grid)" opacity=".38"/>
+  <rect x="170" y="126" width="640" height="430" rx="22" fill="#101A2C" stroke="rgba(255,255,255,.16)" stroke-width="2"/>
+  <path d="M170 220H810" stroke="#62E6FF" stroke-width="6"/>
+  <path d="M286 126V74" stroke="#FFD166" stroke-width="18" stroke-linecap="round"/>
+  <path d="M694 126V74" stroke="#FFD166" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="300" cy="300" r="34" fill="#8CF4B8"/>
+  <circle cx="445" cy="300" r="34" fill="#62E6FF"/>
+  <circle cx="590" cy="300" r="34" fill="#FF7AB6"/>
+  <circle cx="300" cy="420" r="34" fill="#FFD166"/>
+  <circle cx="445" cy="420" r="34" fill="#8CF4B8"/>
+  <path d="M880 255C938 255 985 302 985 360C985 418 938 465 880 465" stroke="#62E6FF" stroke-width="22" stroke-linecap="round"/>
+  <path d="M880 310V225H978" stroke="#FFD166" stroke-width="18" stroke-linecap="round"/>
+  <text x="170" y="68" fill="#F7FBFF" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800">Appointment Setting</text>
+  <text x="170" y="632" fill="#9AA8BA" font-family="Inter, Arial, sans-serif" font-size="28">Cold calls, booked meetings, reminders, and timely follow-ups</text>
+  <defs>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" stroke="white" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+</svg>

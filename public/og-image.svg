@@ -2,10 +2,10 @@
   <rect width="1200" height="630" fill="#05070D"/>
   <path d="M0 0H1200V630H0V0Z" fill="url(#grid)" opacity=".45"/>
   <path d="M84 104H1116V526H84V104Z" fill="#0D1220" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
-  <text x="128" y="190" fill="#62E6FF" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">TEKATO ZUMORUKUSHI</text>
-  <text x="128" y="282" fill="#F7FBFF" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="800">IT Professional &amp;</text>
-  <text x="128" y="363" fill="#F7FBFF" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="800">System Developer</text>
-  <text x="128" y="430" fill="#9AA8BA" font-family="Inter, Arial, sans-serif" font-size="28">Building digital solutions for communities, government, and healthcare.</text>
+  <text x="128" y="190" fill="#62E6FF" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">DAN JOVER PELORIANA</text>
+  <text x="128" y="282" fill="#F7FBFF" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="800">Virtual Assistant</text>
+  <text x="128" y="363" fill="#F7FBFF" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="800">&amp; Admin Support</text>
+  <text x="128" y="430" fill="#9AA8BA" font-family="Inter, Arial, sans-serif" font-size="28">Client communication, appointment setting, CRM, and sales coordination.</text>
   <circle cx="968" cy="256" r="108" fill="#12243C" stroke="#62E6FF" stroke-width="4"/>
   <path d="M875 425C897 372 928 347 968 347C1008 347 1039 372 1061 425" stroke="#FFD166" stroke-width="18" stroke-linecap="round"/>
   <circle cx="968" cy="255" r="62" fill="#D6A073"/>

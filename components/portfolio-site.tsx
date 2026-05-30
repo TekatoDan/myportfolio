@@ -1,233 +1,185 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowUp,
   ArrowUpRight,
-  Award,
   BadgeCheck,
-  BrainCircuit,
   BriefcaseBusiness,
-  Building2,
+  CalendarCheck,
   CheckCircle2,
   ClipboardCheck,
-  Code2,
   Database,
   Download,
-  GraduationCap,
-  HeartPulse,
-  Layers3,
+  FileText,
+  Headphones,
   Mail,
   MapPin,
   MessageCircle,
-  Palette,
-  Rocket,
+  PhoneCall,
   SearchCheck,
   ShieldCheck,
+  Sparkles,
+  Target,
   Users,
 } from "lucide-react";
 
-const navItems = [
-  "Home",
-  "About",
-  "Skills",
-  "Experience",
-  "Projects",
-  "Certifications",
-  "Contact",
-];
+const navItems = ["Home", "About", "Services", "Experience", "Skills", "Contact"];
 
 const typeLines = [
-  "System Developer",
-  "IT Professional",
-  "Healthcare Data Researcher",
-  "Community Tech Builder",
-  "Entrepreneur",
+  "Virtual Assistant",
+  "Client Support Specialist",
+  "Appointment Setter",
+  "CRM & Admin Support",
+  "Sales Coordinator",
 ];
 
 const highlights = [
-  { value: "4", label: "Flagship systems" },
-  { value: "8+", label: "Skill domains" },
-  { value: "3", label: "Impact sectors" },
+  { value: "3+", label: "Years experience" },
+  { value: "C2", label: "English level" },
+  { value: "100%", label: "Detail focused" },
 ];
 
-const skills = [
+const services = [
   {
-    category: "Frontend Development",
-    level: 88,
-    icon: Code2,
-    tools: "Next.js, React, TypeScript, Tailwind CSS",
+    title: "Virtual Assistance & Admin Support",
+    category: "Operations",
+    image: "/va/admin-support.svg",
+    description:
+      "Reliable day-to-day administrative support for busy founders, teams, and client-facing operations.",
+    points: ["Calendar support", "Document organization", "Workflow follow-through"],
   },
   {
-    category: "Backend Development",
-    level: 82,
-    icon: Layers3,
-    tools: "APIs, authentication, server workflows",
+    title: "Appointment Scheduling",
+    category: "Sales Support",
+    image: "/va/appointment-setting.svg",
+    description:
+      "Professional appointment setting, cold calling support, follow-ups, and lead coordination.",
+    points: ["Cold calls", "Lead generation", "Timely follow-ups"],
   },
   {
-    category: "Database Management",
-    level: 84,
-    icon: Database,
-    tools: "SQL, relational modeling, records systems",
+    title: "Email, Phone & Client Communication",
+    category: "Client Success",
+    image: "/va/client-communication.svg",
+    description:
+      "Clear, empathetic, and organized communication across high-volume client inquiries.",
+    points: ["Phone handling", "Inbox support", "Client relationship management"],
   },
   {
-    category: "UI/UX Design",
-    level: 86,
-    icon: Palette,
-    tools: "Wireframes, design systems, user journeys",
-  },
-  {
-    category: "System Analysis",
-    level: 90,
-    icon: SearchCheck,
-    tools: "Requirements, workflows, documentation",
-  },
-  {
-    category: "Project Management",
-    level: 80,
-    icon: ClipboardCheck,
-    tools: "Planning, delivery, stakeholder alignment",
-  },
-  {
-    category: "Healthcare Data Research",
-    level: 85,
-    icon: HeartPulse,
-    tools: "Eligibility, case details, public service data",
-  },
-  {
-    category: "AI & Automation Tools",
-    level: 78,
-    icon: BrainCircuit,
-    tools: "Prompting, workflow automation, productivity systems",
+    title: "CRM & Data Management",
+    category: "Data",
+    image: "/va/crm-data.svg",
+    description:
+      "Accurate data entry, sensitive information handling, CRM updates, and records maintenance.",
+    points: ["CRM hygiene", "Database updates", "Confidential records"],
   },
 ];
 
 const experiences = [
   {
-    role: "Intake Specialist",
-    period: "Current",
+    role: "Insider Sales Representative",
+    company: "JonesZylon",
+    period: "Oct 2025 - Present",
+    icon: Target,
+    bullets: [
+      "Support insider sales operations through client outreach, lead follow-up, and relationship-focused communication.",
+      "Coordinate with prospects and customers to understand needs, provide timely updates, and maintain organized sales records.",
+      "Assist with CRM tracking, pipeline visibility, and administrative follow-through for active sales opportunities.",
+    ],
+  },
+  {
+    role: "International Sales Representative",
+    company: "EVORETRO",
+    period: "Jan 2025 - Aug 2025",
+    icon: Target,
+    bullets: [
+      "Managed international client accounts with tailored solutions and relationship-focused support.",
+      "Oversaw lead generation, negotiations, sales operations, and deal coordination.",
+      "Coordinated with cross-functional teams for timely order fulfillment and customer satisfaction.",
+      "Conducted market research to identify overseas opportunities and strengthen brand presence.",
+    ],
+  },
+  {
+    role: "Case Manager / Claims Management Specialist",
+    company: "Citizens Disability",
+    period: "Mar 2023 - Dec 2024",
+    icon: ShieldCheck,
+    bullets: [
+      "Conducted client interviews and gathered sensitive work, medical, and Social Security information for SSDI applications.",
+      "Handled high volumes of inquiries with accuracy, professionalism, and empathy.",
+      "Maintained detailed records while following company protocols and data protection standards.",
+    ],
+  },
+  {
+    role: "CSR | Appointment Setter",
+    company: "Prime Inbox Inc.",
+    period: "Nov 2021 - Dec 2022",
+    icon: PhoneCall,
+    bullets: [
+      "Conducted cold calls and scheduled appointments to generate leads and support sales efforts.",
+      "Managed client inquiries, timely follow-ups, and organized CRM records.",
+      "Collaborated with team members to streamline processes and improve client satisfaction.",
+    ],
+  },
+];
+
+const skillGroups = [
+  {
+    title: "Administrative Support",
+    level: 94,
+    icon: ClipboardCheck,
+    copy: "Calendar management, documentation, follow-ups, task tracking, and executive support.",
+  },
+  {
+    title: "Client Communication",
+    level: 92,
+    icon: Headphones,
+    copy: "Professional email and phone communication with an empathetic, service-first approach.",
+  },
+  {
+    title: "CRM & Database Management",
+    level: 88,
+    icon: Database,
+    copy: "Clean records, accurate data entry, inquiry tracking, and organized client histories.",
+  },
+  {
+    title: "Appointment Setting",
+    level: 90,
+    icon: CalendarCheck,
+    copy: "Cold calling, scheduling, reminders, lead qualification, and follow-up coordination.",
+  },
+  {
+    title: "Project Coordination",
+    level: 86,
     icon: BriefcaseBusiness,
-    copy:
-      "Supports SSDI application intake with careful client communication, accurate data gathering, and eligibility-focused documentation.",
+    copy: "Supporting teams with reliable coordination, status updates, and process improvement.",
   },
   {
-    role: "Academic System Developer",
-    period: "College",
-    icon: GraduationCap,
-    copy:
-      "Builds student-led software projects that translate real institutional pain points into usable digital workflows.",
-  },
-  {
-    role: "Freelance Development Work",
-    period: "Independent",
-    icon: Code2,
-    copy:
-      "Designs and develops practical web interfaces, internal tools, and concepts for business and community use cases.",
-  },
-  {
-    role: "Leadership & Community Projects",
-    period: "Ongoing",
-    icon: Users,
-    copy:
-      "Combines entrepreneurial thinking, creative design, and local problem solving to create systems with public impact.",
+    title: "Research & Market Support",
+    level: 84,
+    icon: SearchCheck,
+    copy: "Market research, opportunity tracking, sales support, and international account assistance.",
   },
 ];
 
-const filters = [
-  "All",
-  "Web Apps",
-  "Government Systems",
-  "Healthcare",
-  "Research",
-  "Concepts",
-] as const;
-
-type Filter = (typeof filters)[number];
-
-const projects = [
-  {
-    title: "PediGrab",
-    category: "Concepts",
-    image: "/projects/pedigrab.svg",
-    description:
-      "A ride-hailing platform concept for tricycles in Digos City, inspired by modern mobility apps and tailored for local transport needs.",
-    tech: ["Next.js", "Maps", "Booking Flow", "Mobile UX"],
-    challenge: "Modernize informal tricycle dispatch without losing local accessibility.",
-    impact: "Designed to improve commuter convenience, driver visibility, and city mobility data.",
-    github: "https://github.com/TekatoDan",
-    demo: "#contact",
-  },
-  {
-    title: "Smart Enrollment & Payment Kiosk",
-    category: "Web Apps",
-    image: "/projects/kiosk.svg",
-    description:
-      "An automated enrollment and payment processing system built as a student project for faster school transactions.",
-    tech: ["TypeScript", "Database Design", "Payments", "Admin Dashboard"],
-    challenge: "Reduce manual queues and connect enrollment steps with payment validation.",
-    impact: "Creates a cleaner student journey from registration to confirmation.",
-    github: "https://github.com/TekatoDan",
-    demo: "#contact",
-  },
-  {
-    title: "Healthcare Hub",
-    category: "Healthcare",
-    image: "/projects/healthcare-hub.svg",
-    description:
-      "A centralized platform concept for free government clinics, focused on service discovery, scheduling, and public access.",
-    tech: ["Healthcare UX", "Search", "Records", "Accessibility"],
-    challenge: "Make free clinic information easier to find and easier to coordinate.",
-    impact: "Improves access to public health services for underserved communities.",
-    github: "https://github.com/TekatoDan",
-    demo: "#contact",
-  },
-  {
-    title: "CADOCS",
-    category: "Government Systems",
-    image: "/projects/cadocs.svg",
-    description:
-      "City Administrator's Office Document Control System for organizing records, routing work, and improving document accountability.",
-    tech: ["Workflow System", "SQL", "Audit Trails", "Role Access"],
-    challenge: "Digitize government records while preserving traceability and process discipline.",
-    impact: "Supports faster retrieval, clearer ownership, and more reliable office workflows.",
-    github: "https://github.com/TekatoDan",
-    demo: "#contact",
-  },
-];
-
-const achievements = [
-  "Completed major academic systems with practical government, healthcare, and education use cases.",
-  "Built a portfolio of concepts that connect business strategy with local community needs.",
-  "Developed strong client communication and research discipline through SSDI intake work.",
-  "Balanced technical development with creative design, painting, and entrepreneurial projects.",
-];
-
-const certifications = [
-  "Academic IT project delivery",
-  "Healthcare data research practice",
-  "System analysis and documentation",
-  "AI-assisted productivity workflows",
+const tools = [
+  "Google Workspace",
+  "Microsoft Office Suite",
+  "CRM Software",
+  "Slack",
+  "Zoom",
+  "Email Management",
+  "Data Entry",
+  "Phone Support",
 ];
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/TekatoDan", icon: Code2 },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/tekato-zumorukushi",
-    icon: BriefcaseBusiness,
-  },
-  {
-    label: "Email",
-    href: "mailto:tekatozumorukushi@gmail.com",
-    icon: Mail,
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/TekatoDan",
-    icon: MessageCircle,
-  },
+  { label: "Email", href: "mailto:danjover515@gmail.com", icon: Mail },
+  { label: "Phone", href: "tel:+639477462117", icon: PhoneCall },
+  { label: "Location", href: "#contact", icon: MapPin },
+  { label: "Message", href: "#contact", icon: MessageCircle },
 ];
 
 const sectionVariant = {
@@ -269,7 +221,7 @@ function TypingLine() {
     if (display.length < current.length) {
       const timeout = window.setTimeout(
         () => setDisplay(current.slice(0, display.length + 1)),
-        72,
+        70,
       );
       return () => window.clearTimeout(timeout);
     }
@@ -277,7 +229,7 @@ function TypingLine() {
     const timeout = window.setTimeout(() => {
       setDisplay("");
       setIndex((value) => (value + 1) % typeLines.length);
-    }, 1450);
+    }, 1350);
 
     return () => window.clearTimeout(timeout);
   }, [display, index]);
@@ -291,26 +243,10 @@ function TypingLine() {
 }
 
 export function PortfolioSite() {
-  const [activeFilter, setActiveFilter] = useState<Filter>("All");
   const [showBackTop, setShowBackTop] = useState(false);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const progressScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === "All") return projects;
-    if (activeFilter === "Research") {
-      return projects.filter((project) => project.title === "Healthcare Hub");
-    }
-    return projects.filter((project) => project.category === activeFilter);
-  }, [activeFilter]);
-
-  useEffect(() => {
-    const onScroll = () => setShowBackTop(window.scrollY > 640);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const animationProps = reduceMotion
     ? { initial: false as const }
@@ -322,6 +258,18 @@ export function PortfolioSite() {
         variants: sectionVariant,
       };
 
+  const contactSubject = useMemo(
+    () => encodeURIComponent("Virtual Assistant opportunity for Dan Jover Peloriana"),
+    [],
+  );
+
+  useEffect(() => {
+    const onScroll = () => setShowBackTop(window.scrollY > 640);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <main id="home">
       <a className="skip-link" href="#main-content">
@@ -330,9 +278,9 @@ export function PortfolioSite() {
       <motion.div className="scroll-progress" style={{ scaleX: progressScale }} />
 
       <header className="site-nav">
-        <a className="brand" href="#home" aria-label="Tekato Zumorukushi home">
-          <span>TZ</span>
-          <strong>Tekato</strong>
+        <a className="brand" href="#home" aria-label="Dan Jover Peloriana home">
+          <span>DJ</span>
+          <strong>Dan Jover</strong>
         </a>
         <nav aria-label="Primary navigation">
           {navItems.map((item) => (
@@ -351,30 +299,28 @@ export function PortfolioSite() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <p className="eyebrow">Software systems with public-service focus</p>
-            <h1 id="hero-title">
-              Building Digital Solutions for Communities, Government, and
-              Healthcare
-            </h1>
+            <p className="eyebrow">Virtual assistance for organized client operations</p>
+            <h1 id="hero-title">Reliable Virtual Assistant for Admin, CRM, and Client Support</h1>
             <p className="hero-role">
-              Tekato Zumorukushi is a <TypingLine />
+              Dan Jover Peloriana is a <TypingLine />
             </p>
             <p className="hero-subtitle">
-              IT Professional, System Developer, and Entrepreneur focused on
-              creating technology that solves real-world problems for students,
-              local offices, clinics, and growing communities.
+              A highly organized Virtual Assistant with over three years of
+              experience in client communications, administrative support,
+              appointment setting, claims coordination, and international sales
+              operations.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="/Tekato-Zumorukushi-Resume.html" download>
+              <a className="button primary" href="/DanJoverPelorianaResume.pdf" download>
                 <Download size={18} aria-hidden="true" />
                 Download Resume
               </a>
-              <a className="button secondary" href="#projects">
-                <Rocket size={18} aria-hidden="true" />
-                View Projects
+              <a className="button secondary" href="#services">
+                <Sparkles size={18} aria-hidden="true" />
+                View Services
               </a>
             </div>
-            <div className="social-row" aria-label="Social links">
+            <div className="social-row" aria-label="Contact shortcuts">
               {socialLinks.map(({ label, href, icon: Icon }) => (
                 <a key={label} href={href} aria-label={label}>
                   <Icon size={18} aria-hidden="true" />
@@ -391,26 +337,39 @@ export function PortfolioSite() {
           >
             <div className="portrait-card">
               <Image
-                src="/avatar.svg"
-                width={640}
-                height={640}
-                alt="Stylized portrait avatar of Tekato Zumorukushi"
+                src="/profile-photo.png"
+                width={1247}
+                height={1261}
+                alt="Professional portrait of Dan Jover Peloriana"
                 priority
               />
               <div>
-                <p>Tekato Zumorukushi</p>
-                <span>IT Professional · System Developer</span>
+                <p>Dan Jover Peloriana</p>
+                <span>Virtual Assistant · Admin Support</span>
               </div>
             </div>
-            <div className="hero-dashboard" aria-label="Portfolio impact snapshot">
+            <div className="hero-dashboard va-dashboard" aria-label="Virtual assistant strengths">
               <div className="dashboard-top">
-                <span>Impact Console</span>
+                <span>Availability Snapshot</span>
                 <BadgeCheck size={18} aria-hidden="true" />
               </div>
-              <div className="dashboard-map">
-                <span />
-                <span />
-                <span />
+              <div className="assistant-board">
+                <div>
+                  <CalendarCheck size={24} aria-hidden="true" />
+                  <span>Scheduling</span>
+                </div>
+                <div>
+                  <Mail size={24} aria-hidden="true" />
+                  <span>Inbox & Calls</span>
+                </div>
+                <div>
+                  <Database size={24} aria-hidden="true" />
+                  <span>CRM Records</span>
+                </div>
+                <div>
+                  <Users size={24} aria-hidden="true" />
+                  <span>Client Care</span>
+                </div>
               </div>
               <div className="metric-grid">
                 {highlights.map((item) => (
@@ -430,29 +389,29 @@ export function PortfolioSite() {
       <section id="about" className="section-pad">
         <SectionHeader
           eyebrow="About"
-          title="A practical technologist with creative range."
-          copy="Tekato blends software development, intake operations, business thinking, and visual design into a portfolio built around useful systems."
+          title="Calm, organized support for teams that move fast."
+          copy="Dan brings the communication discipline of customer support, the accuracy of claims management, and the follow-through needed for remote operations."
         />
         <div className="about-grid">
           <motion.article className="story-panel" {...animationProps}>
             <p>
-              I am an IT professional and college student building systems that
-              connect people with better workflows. My background includes
-              call-center and intake experience for SSDI applications, where
-              accuracy, empathy, and clear documentation matter every day.
+              I help businesses stay organized by managing communication,
+              appointments, records, and client follow-ups with care. My
+              experience spans SSDI claims support, appointment setting, CRM
+              management, international sales coordination, and high-volume
+              client communication.
             </p>
             <p>
-              That operational experience shapes how I approach software:
-              understand the user, map the process, remove friction, and deliver
-              tools that feel credible enough for schools, clinics, local
-              government offices, and small businesses.
+              I work best with teams that need dependable support, clear updates,
+              clean documentation, and someone who can protect the details while
+              keeping clients feeling heard.
             </p>
           </motion.article>
           <motion.div className="value-stack" {...animationProps}>
             {[
-              ["Technical background", "Web apps, databases, dashboards, and workflow systems."],
-              ["Entrepreneurial mindset", "Ideas are evaluated by usefulness, adoption, and impact."],
-              ["Creative discipline", "Painting and design sharpen taste, composition, and user empathy."],
+              ["Client-first communication", "Professional phone, email, and follow-up handling."],
+              ["Sensitive data discipline", "Experience with medical, work history, and SSDI-related records."],
+              ["Operational reliability", "Organized task tracking, CRM upkeep, and process coordination."],
             ].map(([title, copy]) => (
               <div key={title} className="value-item">
                 <CheckCircle2 size={20} aria-hidden="true" />
@@ -466,32 +425,35 @@ export function PortfolioSite() {
         </div>
       </section>
 
-      <section id="skills" className="section-pad alternate">
+      <section id="services" className="section-pad alternate">
         <SectionHeader
-          eyebrow="Skills"
-          title="Full-stack thinking for real-world systems."
-          copy="A balanced skill set across product interfaces, data, system workflows, and research-heavy operations."
+          eyebrow="Services"
+          title="VA services built around communication, scheduling, and clean records."
+          copy="A focused service set for founders, sales teams, agencies, healthcare-adjacent teams, and busy operators."
         />
-        <div className="skills-grid">
-          {skills.map(({ category, level, icon: Icon, tools }, index) => (
+        <div className="project-grid">
+          {services.map((service, index) => (
             <motion.article
-              className="skill-card"
-              key={category}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.45, delay: index * 0.04 }}
-              variants={sectionVariant}
+              className="project-card"
+              key={service.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.05 }}
             >
-              <div className="card-icon">
-                <Icon size={22} aria-hidden="true" />
-              </div>
-              <div>
-                <h3>{category}</h3>
-                <p>{tools}</p>
-              </div>
-              <div className="progress-wrap" aria-label={`${category} skill level ${level}%`}>
-                <span style={{ width: `${level}%` }} />
+              <Image src={service.image} width={1200} height={675} alt={`${service.title} visual`} />
+              <div className="project-body">
+                <div className="project-title-row">
+                  <span>{service.category}</span>
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <div className="tag-row">
+                  {service.points.map((point) => (
+                    <span key={point}>{point}</span>
+                  ))}
+                </div>
               </div>
             </motion.article>
           ))}
@@ -501,11 +463,11 @@ export function PortfolioSite() {
       <section id="experience" className="section-pad">
         <SectionHeader
           eyebrow="Experience"
-          title="A timeline built around service, systems, and delivery."
-          copy="Professional and academic work that proves Tekato can understand stakeholders and turn process problems into technology."
+          title="A track record in client-facing remote operations."
+          copy="Resume-backed experience across sales, appointment setting, claims coordination, CRM records, and client care."
         />
         <div className="timeline">
-          {experiences.map(({ role, period, icon: Icon, copy }, index) => (
+          {experiences.map(({ role, company, period, icon: Icon, bullets }, index) => (
             <motion.article
               className="timeline-item"
               key={role}
@@ -521,146 +483,90 @@ export function PortfolioSite() {
               <div>
                 <span>{period}</span>
                 <h3>{role}</h3>
+                <p className="company-name">{company}</p>
+                <ul className="resume-list">
+                  {bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
+      <section id="skills" className="section-pad alternate">
+        <SectionHeader
+          eyebrow="Skills"
+          title="The practical skills employers expect from a strong VA."
+          copy="A balanced skill set across admin operations, communication, records, sales support, and remote collaboration."
+        />
+        <div className="skills-grid">
+          {skillGroups.map(({ title, level, icon: Icon, copy }, index) => (
+            <motion.article
+              className="skill-card"
+              key={title}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.45, delay: index * 0.04 }}
+              variants={sectionVariant}
+            >
+              <div className="card-icon">
+                <Icon size={22} aria-hidden="true" />
+              </div>
+              <div>
+                <h3>{title}</h3>
                 <p>{copy}</p>
               </div>
-            </motion.article>
-          ))}
-        </div>
-      </section>
-
-      <section id="projects" className="section-pad alternate">
-        <SectionHeader
-          eyebrow="Projects"
-          title="Portfolio work with government, healthcare, and community impact."
-          copy="Premium project cards designed to show the problem, solution, technology, and practical value behind each build."
-        />
-        <div className="filter-bar" aria-label="Project filters">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              type="button"
-              className={activeFilter === filter ? "active" : ""}
-              onClick={() => setActiveFilter(filter)}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-        <div className={`project-grid ${filteredProjects.length === 1 ? "single" : ""}`}>
-          {filteredProjects.map((project, index) => (
-            <motion.article
-              className="project-card"
-              key={project.title}
-              layout
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: index * 0.05 }}
-            >
-              <Image
-                src={project.image}
-                width={1200}
-                height={675}
-                alt={`${project.title} project visual`}
-              />
-              <div className="project-body">
-                <div className="project-title-row">
-                  <span>{project.category}</span>
-                  <ArrowUpRight size={18} aria-hidden="true" />
-                </div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="tag-row">
-                  {project.tech.map((tech) => (
-                    <span key={tech}>{tech}</span>
-                  ))}
-                </div>
-                <dl>
-                  <div>
-                    <dt>Challenge</dt>
-                    <dd>{project.challenge}</dd>
-                  </div>
-                  <div>
-                    <dt>Impact</dt>
-                    <dd>{project.impact}</dd>
-                  </div>
-                </dl>
-                <div className="project-links">
-                  <a href={project.github}>
-                    <Code2 size={16} aria-hidden="true" />
-                    GitHub
-                  </a>
-                  <a href={project.demo}>
-                    <ArrowUpRight size={16} aria-hidden="true" />
-                    Live Demo
-                  </a>
-                </div>
+              <div className="progress-wrap" aria-label={`${title} skill level ${level}%`}>
+                <span style={{ width: `${level}%` }} />
               </div>
             </motion.article>
           ))}
         </div>
-      </section>
-
-      <section id="certifications" className="section-pad">
-        <SectionHeader
-          eyebrow="Achievements"
-          title="Evidence of momentum and professional discipline."
-          copy="A dedicated space for academic progress, completed systems, certifications, and leadership work."
-        />
-        <div className="achievement-grid">
-          <motion.div className="achievement-panel" {...animationProps}>
-            <Award size={28} aria-hidden="true" />
-            <h3>Major achievements</h3>
-            <ul>
-              {achievements.map((achievement) => (
-                <li key={achievement}>{achievement}</li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div className="achievement-panel" {...animationProps}>
-            <ShieldCheck size={28} aria-hidden="true" />
-            <h3>Certifications & focus areas</h3>
-            <ul>
-              {certifications.map((certification) => (
-                <li key={certification}>{certification}</li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
+        <motion.div className="tools-panel" {...animationProps}>
+          <FileText size={24} aria-hidden="true" />
+          <h3>Tools & Workflows</h3>
+          <div className="tag-row">
+            {tools.map((tool) => (
+              <span key={tool}>{tool}</span>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       <section id="contact" className="section-pad contact-section">
         <SectionHeader
           eyebrow="Contact"
-          title="Let’s build something practical and credible."
-          copy="For recruiters, clients, collaborators, and organizations looking for a developer who understands both software and operations."
+          title="Need organized VA support? Let’s talk."
+          copy="Available for virtual assistance, appointment setting, CRM updates, customer support, and sales coordination roles."
         />
         <div className="contact-grid">
           <motion.div className="contact-panel" {...animationProps}>
-            <h3>Available for</h3>
+            <h3>Contact Details</h3>
             <div className="contact-options">
-              {[
-                ["Recruiter conversations", BriefcaseBusiness],
-                ["System development projects", Building2],
-                ["Healthcare and public-service tools", HeartPulse],
-                ["Community technology concepts", MapPin],
-              ].map(([label, Icon]) => (
-                <div key={label as string}>
-                  <Icon size={18} aria-hidden="true" />
-                  <span>{label as string}</span>
-                </div>
-              ))}
-            </div>
-            <div className="social-row contact-socials">
-              {socialLinks.map(({ label, href, icon: Icon }) => (
-                <a key={label} href={href} aria-label={label}>
-                  <Icon size={18} aria-hidden="true" />
-                </a>
-              ))}
+              <a href="mailto:danjover515@gmail.com">
+                <Mail size={18} aria-hidden="true" />
+                <span>danjover515@gmail.com</span>
+              </a>
+              <a href="tel:+639477462117">
+                <PhoneCall size={18} aria-hidden="true" />
+                <span>+639 47-746-2117</span>
+              </a>
+              <div>
+                <MapPin size={18} aria-hidden="true" />
+                <span>Davao City, Davao del Sur</span>
+              </div>
+              <div>
+                <BadgeCheck size={18} aria-hidden="true" />
+                <span>English Level: C2 Advanced / Mastery</span>
+              </div>
             </div>
           </motion.div>
           <motion.form
             className="contact-form"
-            action="mailto:tekatozumorukushi@gmail.com"
+            action={`mailto:danjover515@gmail.com?subject=${contactSubject}`}
             method="post"
             encType="text/plain"
             {...animationProps}
@@ -688,19 +594,19 @@ export function PortfolioSite() {
       <footer>
         <div>
           <a className="brand" href="#home">
-            <span>TZ</span>
-            <strong>Tekato Zumorukushi</strong>
+            <span>DJ</span>
+            <strong>Dan Jover Peloriana</strong>
           </a>
-          <p>IT Professional · System Developer · Community-focused builder</p>
+          <p>Virtual Assistant · Administrative Support · Client Communication</p>
         </div>
         <nav aria-label="Footer navigation">
-          {navItems.slice(0, 5).map((item) => (
+          {navItems.map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`}>
               {item}
             </a>
           ))}
         </nav>
-        <p>© {new Date().getFullYear()} Tekato Zumorukushi. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Dan Jover Peloriana. All rights reserved.</p>
       </footer>
 
       <button

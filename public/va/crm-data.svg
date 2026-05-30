@@ -1,0 +1,20 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#070B14"/>
+  <path d="M0 0H1200V675H0V0Z" fill="url(#grid)" opacity=".38"/>
+  <ellipse cx="420" cy="184" rx="210" ry="72" fill="#10243A" stroke="#62E6FF" stroke-width="5"/>
+  <path d="M210 184V454C210 494 304 526 420 526C536 526 630 494 630 454V184" fill="#101A2C"/>
+  <path d="M210 274C210 314 304 346 420 346C536 346 630 314 630 274" stroke="#62E6FF" stroke-width="5"/>
+  <path d="M210 364C210 404 304 436 420 436C536 436 630 404 630 364" stroke="#8CF4B8" stroke-width="5"/>
+  <path d="M732 188H1008" stroke="#F7FBFF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M732 258H956" stroke="#62E6FF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M732 328H1030" stroke="#FFD166" stroke-width="18" stroke-linecap="round"/>
+  <path d="M732 398H916" stroke="#FF7AB6" stroke-width="18" stroke-linecap="round"/>
+  <path d="M732 468H990" stroke="#8CF4B8" stroke-width="18" stroke-linecap="round"/>
+  <text x="154" y="68" fill="#F7FBFF" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800">CRM &amp; Data Management</text>
+  <text x="154" y="632" fill="#9AA8BA" font-family="Inter, Arial, sans-serif" font-size="28">Accurate records, data entry, database hygiene, and client history</text>
+  <defs>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" stroke="white" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+</svg>
