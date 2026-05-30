@@ -1,0 +1,20 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#061216"/>
+  <path d="M0 0H1200V675H0V0Z" fill="url(#grid)" opacity=".4"/>
+  <path d="M105 103H1095V572H105V103Z" fill="#0B1823" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+  <circle cx="359" cy="338" r="126" fill="#10263A" stroke="#62E6FF" stroke-width="5"/>
+  <path d="M359 258V418" stroke="#8CF4B8" stroke-width="34" stroke-linecap="round"/>
+  <path d="M279 338H439" stroke="#8CF4B8" stroke-width="34" stroke-linecap="round"/>
+  <path d="M579 200H969" stroke="#F7FBFF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M579 255H888" stroke="#62E6FF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M579 339H971" stroke="#FFD166" stroke-width="18" stroke-linecap="round"/>
+  <path d="M579 394H845" stroke="#FF7AB6" stroke-width="18" stroke-linecap="round"/>
+  <path d="M579 479H934" stroke="#8CF4B8" stroke-width="18" stroke-linecap="round"/>
+  <text x="105" y="66" fill="#F7FBFF" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800">Healthcare Hub</text>
+  <text x="105" y="632" fill="#9AA8BA" font-family="Inter, Arial, sans-serif" font-size="28">Centralized discovery for free government clinics</text>
+  <defs>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" stroke="white" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+</svg>

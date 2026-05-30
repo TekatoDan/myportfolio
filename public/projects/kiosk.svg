@@ -1,0 +1,21 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#080D18"/>
+  <path d="M0 0H1200V675H0V0Z" fill="url(#grid)" opacity=".38"/>
+  <path d="M196 91H789V584H196V91Z" fill="#101A2C" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+  <path d="M267 160H718V400H267V160Z" fill="#08111F" stroke="#62E6FF" stroke-width="4"/>
+  <path d="M312 217H535" stroke="#F7FBFF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M312 268H653" stroke="#8CF4B8" stroke-width="18" stroke-linecap="round"/>
+  <path d="M312 319H606" stroke="#FFD166" stroke-width="18" stroke-linecap="round"/>
+  <path d="M412 458H573" stroke="#FF7AB6" stroke-width="28" stroke-linecap="round"/>
+  <path d="M894 194H1008V475H894V194Z" fill="#0D1728" stroke="#FFD166" stroke-width="4"/>
+  <path d="M923 246H979" stroke="#62E6FF" stroke-width="14" stroke-linecap="round"/>
+  <path d="M923 296H979" stroke="#8CF4B8" stroke-width="14" stroke-linecap="round"/>
+  <path d="M923 346H979" stroke="#FF7AB6" stroke-width="14" stroke-linecap="round"/>
+  <text x="196" y="54" fill="#F7FBFF" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800">Smart Enrollment &amp; Payment Kiosk</text>
+  <text x="196" y="636" fill="#9AA8BA" font-family="Inter, Arial, sans-serif" font-size="28">Automated student registration and payment processing</text>
+  <defs>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" stroke="white" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+</svg>
